@@ -42,8 +42,8 @@ const create = (baseURL = 'http://dev.markitondemand.com/Api/v2') => {
   // Since we can't hide from that, we embrace it by getting out of the
   // way at this level.
   //
-  const lookup = (symbol) => api.get('json/Lookup', { input: symbol })
-  const quote = (symbol) => api.get('json/Quote', { symbol })
+  const lookup = (symbol) => api.get('/Lookup/json', { input: symbol })
+  const quote = (symbol) => api.get('/Quote/json', { symbol })
 
   // ------
   // STEP 3
