@@ -22,15 +22,13 @@ export default class SymbolInput extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.label}>
-          Input a Stock Symbol to Search:
+          Search by company name or symbol:
         </Text>
         <TextInput
           value={value}
           onChangeText={val => update(val)}
-          autoCapitalize="characters"
           returnKeyType="search"
           style={styles.textInput}
-          maxLength={5}
           clearTextOnFocus={true}
           onSubmitEditing={() => lookup(value)}
         />

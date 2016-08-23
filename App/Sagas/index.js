@@ -22,3 +22,11 @@ export default function * root () {
   yield fork(getCityWeather(api).watcher)
   yield fork(SymbolLookup(stockApi).watcher)
 }
+// export default function * root () {
+//   yield [
+//     watchStartup(),
+//     watchLoginAttempt(),
+//     getCityWeather(api).watcher(),
+//     SymbolLookup(stockApi).watcher(),
+//   ]
+// }

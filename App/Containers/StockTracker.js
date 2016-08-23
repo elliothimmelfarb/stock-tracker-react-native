@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react'
-import { ScrollView, Text } from 'react-native'
+import { ScrollView, Text, View } from 'react-native'
 import { connect } from 'react-redux'
 import Actions from '../Actions/Creators'
 import { Actions as NavigationActions } from 'react-native-router-flux'
 import SymbolInput from '../Components/SymbolInput'
+import Results from './Results'
 
 // Styles
 import styles from './Styles/StockTrackerStyle'
@@ -17,6 +18,13 @@ class StockTracker extends React.Component {
     this.lookup = this.lookup.bind(this)
   }
 
+  static propTypes = {
+    updateInput: PropTypes.func,
+    lookup: PropTypes.func,
+    searchValue: PropTypes.string,
+    searchResults: PropTypes.array,
+  }
+
   updateInput(value) {
     // console.log(value)
     this.props.updateInput(value)
@@ -27,24 +35,21 @@ class StockTracker extends React.Component {
   }
 
   render () {
-    const { searchValue, lookup } = this.props;
+    const { searchValue, lookup, searchResults } = this.props;
+    const list = searchResults.length ? <Results /> : <View />
     return (
       <ScrollView style={styles.container}>
         <SymbolInput update={this.updateInput} value={searchValue} lookup={this.lookup}/>
+        { list }
       </ScrollView>
     )
   }
 }
 
-StockTracker.propTypes = {
-  updateInput: PropTypes.func,
-  lookup: PropTypes.func,
-  searchValue: PropTypes.string,
-}
-
 const mapStateToProps = (state) => {
   return {
     searchValue: state.input.value,
+    searchResults: state.lookup.list,
   }
 }
 

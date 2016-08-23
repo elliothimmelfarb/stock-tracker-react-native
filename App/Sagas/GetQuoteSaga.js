@@ -22,9 +22,9 @@ export default (api) => {
     const response = yield call(api.lookup, symbol)
     // success?
     if (response.ok) {
-      yield put(Actions.receiveLookupSuccess(response.data))
+      yield put(Actions.receiveQuoteSuccess(response.data))
     } else {
-      yield put(Actions.receiveLookupFailure(response.data))
+      yield put(Actions.receiveQuoteFailure(response.data))
     }
   }
 
@@ -40,7 +40,7 @@ export default (api) => {
   // 4.  Calls the worker (above) to do the job.
   function * watcher () {
     while (true) {
-      const action = yield take(Types.REQUEST_STOCK_LOOKUP)
+      const action = yield take(Types.REQUEST_STOCK_QUOTE)
       const { symbol } = action
       yield call(worker, symbol)
     }

@@ -20,11 +20,14 @@ const receiveTemperatureFailure = () => ({ type: Types.TEMPERATURE_FAILURE })
 const updateInput = (value) => ({ type: Types.UPDATE_INPUT, value })
 const clearInput = () => ({ type: Types.CLEAR_INPUT })
 
-console.log(Types)
 
 const requestStockLookup = (symbol) => ({ type: Types.REQUEST_STOCK_LOOKUP, symbol })
 const receiveLookupSuccess = (data) => ({ type: Types.RECEIVE_LOOKUP_SUCCESS, data })
 const receiveLookupFailure = () => ({ type: Types.RECEIVE_LOOKUP_FAILURE })
+
+const requestStockQuote = (symbol) => ({ type: Types.REQUEST_STOCK_QUOTE, symbol })
+const receiveQuoteSuccess = (data) => ({ type: Types.RECEIVE_QUOTE_SUCCESS, data })
+const receiveQuoteFailure = () => ({ type: Types.RECEIVE_QUOTE_FAILURE })
 
 /**
  Makes available all the action creators we've created.
